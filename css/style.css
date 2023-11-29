@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#main{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 320px;
+    height: auto;
+    flex: 1;
+    margin: 30px;
+}
+div{
+    background-color: aqua;
+    width: 20px;
+    height: 20px;
+    border: solid black 1px;
+}
+.active{
+    background-color: aliceblue !important; 
+}
