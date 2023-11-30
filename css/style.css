@@ -5,19 +5,18 @@
 }
 #main{
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    width: 320px;
-    height: auto;
+    width: 224px;
+    height: 224px;
     flex: 1;
     margin: 30px;
 }
 div{
-    background-color: aqua;
-    width: 20px;
-    height: 20px;
+    background-color: white;
+    width: 14px;
+    height: 14px;
     border: solid black 1px;
 }
 .active{
-    background-color: aliceblue !important; 
+    background-color: rgba(0, 0, 0, 100%) !important; 
 }
