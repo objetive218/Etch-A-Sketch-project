@@ -9,8 +9,11 @@ const toggleMode = () => {
     selectMode ? selectMode = false : selectMode = true;
 }
 toggleColor.addEventListener("click", () => {
+    let allBox = document.querySelectorAll(".del")
     toggleMode();
-    createRambow();
+    del(allBox)
+    create(total)
+    selectMode === false?createRambow(): activeHover;
 })
 const changeColor = (e) => {
     e.style.backgroundColor = randomColor();
@@ -24,10 +27,13 @@ const create = (total) => {
     for (let index = 0; index < total; index++) {
         let box = document.createElement("div");
         box.id =  (`grid${index}`);
-        box.classList= "del"
+        box.classList= "del";
         main.appendChild(box);
         box.addEventListener("mouseover",(e) =>{
-        selectMode ? activeHover(e.target): changeColor(e.target);
+            if(selectMode === null){
+            }else{
+                selectMode ? activeHover(e.target): changeColor(e.target);
+            }
         } )
     };
 }
@@ -42,24 +48,31 @@ const createRambow = () => {
 }
 // toggle shading
 toggleShading.addEventListener("click", () => {
+    selectMode = null;
+    let allBox = document.querySelectorAll(".del")
+    del(allBox)
+    create(total)
     toggleShadow()
 })
-let percent = 10;
-const shading = (e) => {  
-    e.style.backgroundColor = (`rgba(0, 0, 0, ${percent}%)`)
-    percent += 10;
-    console.log(percent)
-}
+
 
 const toggleShadow = () => {
     let allBox = document.querySelectorAll(".del")
     allBox.forEach(element => {
-        element.classList.remove(".active")
-        element.addEventListener("mouseover",(e) =>{
-            shading(e.target)
+        element.addEventListener("mouseover",(e) =>{  
+            let currentOpacity = Number(e.target.style.backgroundColor.slice(-4, -1))
+            if(currentOpacity <= 0.9){
+                e.target.style.backgroundColor = `rgba(0, 0, 0, ${currentOpacity + 0.1})`;
+            }else if (e.target.style.backgroundColor == 'rgb(0, 0, 0)'){
+                return;
+            }else{
+                e.target.style.backgroundColor = 'rgba(0, 0, 0, 0.1)'; 
+            }
         })
     })
 }
+
+
 // delet all elements
 const del = (allElements) => {
     allElements.forEach(element => {
